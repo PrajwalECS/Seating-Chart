@@ -145,11 +145,16 @@ public class RaceChoosingWin extends JFrame implements ActionListener {
 			} catch (IOException exception) {
 
 			}
-			XSSFSheet ws = wb.getSheet("Test1");
+			XSSFSheet ws = wb.getSheet("Sheet1");
 			try {
 				if (!((ws.getRow(count).getCell(0)).equals(null))) {
+					white.setSelected(false);
 					namefield.setText(ws.getRow(count).getCell(0).toString());
-					//count++;
+					if (white.isSelected()) {
+						races.add("White");
+						System.out.println(races);
+					}
+					count++;
 				}
 			} catch (NullPointerException exception) {
 				namefield.setText("All Students Are Done!");
