@@ -66,7 +66,22 @@ public class SeatingChartWin extends JFrame {
 		setContentPane(contentPane);
 		Object[][] data = new Object[30][15];
 		String[] column = new String[14];
-		data[2][1] = "Dominique M.";
+		data[5][1] = "Dominique M.";
+		data[6][1] = "Bob E.";
+		data[10][1] = "Cathy D.";
+		data[11][1] = "Meagan D.";
+		data[15][1] = "Traz T.";
+		data[16][1] = "Poppy E.";
+		data[19][1] = "Kyle S.";
+		data[19][2] = "Gannon K.";
+		data[19][4] = "Austin W.";
+		data[19][5] = "Mehdi M.";
+		data[19][8] = "Connor F.";
+		data[19][9] = "Nathan N.";
+		data[19][11] = "Nathan M.";
+		data[19][12] = "Jeffrey T.";
+		data[16][12] = "Jordan C.";
+		data[15][12] = "Mecca K.";
 		DefaultTableModel d = new DefaultTableModel(data,column);
 
 		table = new JTable(d);

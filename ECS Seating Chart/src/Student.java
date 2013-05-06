@@ -12,6 +12,18 @@ public class Student {
 		this.race = race;
 		this.gender = gender;
 	}
+	public Student(String name) {
+		this.name = name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setRace(String race) {
+		this.race = race;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getName() {
 		return name;
 	}
