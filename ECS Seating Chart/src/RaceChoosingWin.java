@@ -1,15 +1,15 @@
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 import org.apache.poi.xssf.usermodel.*;
 import java.awt.GridLayout;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class RaceChoosingWin extends JFrame implements ActionListener {
 
@@ -17,9 +17,18 @@ public class RaceChoosingWin extends JFrame implements ActionListener {
 	JButton create;
 	JButton edit;
 	JButton next;
+	JRadioButton african;
+	JRadioButton white;
+	JRadioButton asian;
+	JRadioButton alaskanpacific;
+	JRadioButton hispanic;
+	JRadioButton indian;
+	JRadioButton nativeamerican;
 	JTextField namefield;
 	InputStream fis;
+	FileOutputStream fos;
 	XSSFWorkbook wb;
+	ArrayList<String> races = new ArrayList<String>();
 	int count = 1;
 
 	public RaceChoosingWin() {
@@ -30,37 +39,37 @@ public class RaceChoosingWin extends JFrame implements ActionListener {
 		getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		JPanel panel = new JPanel();
 
-		JRadioButton african = new JRadioButton();
+		african = new JRadioButton();
 		african.setText("African American");
 		group.add(african);
 		panel.add(african);
 
-		JRadioButton white = new JRadioButton();
+		white = new JRadioButton();
 		white.setText("White");
 		group.add(white);
 		panel.add(white);
 
-		JRadioButton asian = new JRadioButton();
+		asian = new JRadioButton();
 		asian.setText("Asian American");
 		group.add(asian);
 		panel.add(asian);
 
-		JRadioButton alaskanpacific = new JRadioButton();
+		alaskanpacific = new JRadioButton();
 		alaskanpacific.setText("Alaskan Native/Pacific Islander");
 		group.add(alaskanpacific);
 		panel.add(alaskanpacific);
 
-		JRadioButton hispanic = new JRadioButton();
+		hispanic = new JRadioButton();
 		hispanic.setText("Hispanic");
 		group.add(hispanic);
 		panel.add(hispanic);
 
-		JRadioButton indian = new JRadioButton();
+		indian = new JRadioButton();
 		indian.setText("Indian");
 		group.add(indian);
 		panel.add(indian);
 
-		JRadioButton nativeamerican = new JRadioButton();
+		nativeamerican = new JRadioButton();
 		nativeamerican.setText("Native American");
 		group.add(nativeamerican);
 		panel.add(nativeamerican);
@@ -128,23 +137,24 @@ public class RaceChoosingWin extends JFrame implements ActionListener {
 		} else if (e.getSource() == next) {
 			try {
 				fis = new FileInputStream("StudentData.xlsx");
+
 				wb = new XSSFWorkbook(fis);
+
 			} catch (FileNotFoundException exception) {
 
 			} catch (IOException exception) {
 
 			}
-
 			XSSFSheet ws = wb.getSheet("Test1");
 			try {
 				if (!((ws.getRow(count).getCell(0)).equals(null))) {
 					namefield.setText(ws.getRow(count).getCell(0).toString());
-					count++;
+					//count++;
 				}
 			} catch (NullPointerException exception) {
 				namefield.setText("All Students Are Done!");
+
 			}
-			
 
 		}
 	}
